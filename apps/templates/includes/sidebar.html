@@ -1,10 +1,10 @@
-{% load i18n static admin_soft %}
+
 
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
   <div class="sidenav-header">
     <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-    <a class="navbar-brand m-0" href="{% url 'admin:index' %}">
-      <img src="{% static 'img/logo-ct-dark.png' %}" class="navbar-brand-img h-100" alt="main_logo">
+    <a class="navbar-brand m-0" href="/">
+      <img src="{{ url_for('static', filename = 'assets/img/logo-ct-dark.png' )}}" class="navbar-brand-img h-100" alt="main_logo">
       <span class="ms-1 font-weight-bold">Soft UI Dashboard</span>
     </a>
   </div>
@@ -12,51 +12,8 @@
   <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
     <ul class="navbar-nav">
 
-      {% admin_get_menu as app_list %}
-      {% if app_list %}
-          {% for app in app_list %}
-              {% if app.has_perms and not app.pinned %}
-                <li class="nav-item">
-                  <span class="nav-link{% if app_label != app.label and app.url not in request.path|urlencode  %} collapsed{% endif %} d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#submenu-{{ app.app_label }}">
-                    <span class="d-flex justify-content-between align-items-center">
-                      <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <span class="sidebar-icon {{ app.icon }}"></span>
-                      </div>
-                      <a href="{{ app.url }}">
-                        <span class="nav-link-text ms-1">{{ app.label|slice:10 }}{% if app.label|length > 10 %}..{% endif %}</span>
-                      </a>
-                    </span>
-                  </span>
-
-                  {% if app.models %}
-                    <div class="multi-level ms-5 collapse {% if 'tables-bootstrap-' in segment or app_label == app.label or app.url in request.path|urlencode %} show {% endif %}" role="list" id="submenu-{{ app.app_label }}"                                                                                                       aria-expanded="{% if app_label == app.label or app.url in request.path|urlencode %}true{% else %}false{% endif %}">
-                      <ul class="flex-column nav">
-                        {% for model in app.models %}
-                          {% if model.url %}
-                            <li class="nav-item{% if 'bootstrap-tables' in segment or model.url in request.path|urlencode %} active {% endif %} list-unstyled">
-                              <a class="nav-link" href="{{ model.url }}">
-                                <span class="nav-link-text ms-1">{{ model.label }}</span>
-                              </a>
-                            </li>
-                          {% else %}
-                            <li class="nav-item list-unstyled">{{ model.label }}</li>
-                          {% endif %}
-                        {% endfor %}
-                      </ul>
-                    </div>
-                  {% endif %}
-                </li>
-              {% endif %}
-          {% endfor %}
-      {% endif %}
-
       <li class="nav-item">
-
-        {% if request.user.is_superuser %}
-        <a href="{% url 'admin:index' %}" class="nav-link {% if 'index' in segment %} active {% endif %}">
-        {% else %}
-        <a href="{% url 'index' %}" class="nav-link {% if 'index' in segment %} active {% endif %}">
-        {% endif %}
+        <a href="/" class="nav-link {% if 'index' in segment %} active {% endif %}">
 
           <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
             <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -73,14 +30,12 @@
               </g>
             </svg>
           </div>
-          <span class="nav-link-text ms-1">{% trans 'Dashboard' %}</span>
+          <span class="nav-link-text ms-1">Dashboard</span>
         </a>
       </li>
 
-    {% if request.user.is_authenticated and not request.user.is_superuser %}
-
       <li class="nav-item">
-          <a class="nav-link {% if 'tables' in segment %} active {% endif %} " href="{% url 'tables' %}">
+          <a class="nav-link {% if 'tables' in segment %} active {% endif %} " href="{{url_for('pages_tables')}}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>office</title>
@@ -100,7 +55,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {% if 'billing' in segment %} active {% endif %} " href="{% url 'billing' %}">
+          <a class="nav-link {% if 'billing' in segment %} active {% endif %} " href="{{url_for('pages_billing')}}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>credit-card</title>
@@ -120,7 +75,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {% if 'vr' in segment %} active {% endif %} " href="{% url 'vr' %}">
+          <a class="nav-link {% if 'vr' in segment %} active {% endif %} " href="{{url_for('pages_virtual_reality')}}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>box-3d-50</title>
@@ -141,7 +96,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {% if 'rtl' in segment %} active {% endif %} " href="{% url 'rtl' %}">
+          <a class="nav-link {% if 'rtl' in segment %} active {% endif %} " href="{{url_for('pages_rtl')}}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>settings</title>
@@ -165,7 +120,7 @@
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link {% if 'profile' in segment %} active {% endif %} " href="{% url 'profile' %}">
+          <a class="nav-link {% if 'profile' in segment %} active {% endif %} " href="{{url_for('pages_profile')}}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>customer-support</title>
@@ -186,7 +141,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="{% url 'login' %}">
+          <a class="nav-link  " href="{{url_for('accounts_login')}}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>document</title>
@@ -206,7 +161,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="{% url 'register' %}">
+          <a class="nav-link  " href="{{url_for('accounts_register')}}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="20px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>spaceship</title>
@@ -227,14 +182,13 @@
             <span class="nav-link-text ms-1">Sign Up</span>
           </a>
         </li>
-        {% endif %}
 
     </ul>
 
   </div>
   <div class="sidenav-footer mx-3 ">
     <div class="card card-background shadow-none card-background-mask-secondary" id="sidenavCard">
-      <div class="full-background" style="background-image: url('{% static 'img/curved-images/white-curved.jpg' %}')"></div>
+      <div class="full-background" style="background-image: url('{{ url_for('static', filename = 'assets/img/curved-images/white-curved.jpg' )}}')"></div>
       <div class="card-body text-start p-3 w-100">
         <div class="icon icon-shape icon-sm bg-white shadow text-center mb-3 d-flex align-items-center justify-content-center border-radius-md">
           <i class="ni ni-diamond text-dark text-gradient text-lg top-0" aria-hidden="true" id="sidenavCardIcon"></i>
