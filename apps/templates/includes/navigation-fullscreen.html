@@ -5,37 +5,52 @@
         Soft UI Dashboard
       </a>
       <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon mt-2">
-            <span class="navbar-toggler-bar bar1"></span>
-            <span class="navbar-toggler-bar bar2"></span>
-            <span class="navbar-toggler-bar bar3"></span>
-          </span>
+        <span class="navbar-toggler-icon mt-2">
+          <span class="navbar-toggler-bar bar1"></span>
+          <span class="navbar-toggler-bar bar2"></span>
+          <span class="navbar-toggler-bar bar3"></span>
+        </span>
       </button>
       <div class="collapse navbar-collapse" id="navigation">
-        <ul class="navbar-nav mx-auto ms-xl-auto">
-          
+        <ul class="navbar-nav mx-auto ms-xl-auto me-xl-7">
           <li class="nav-item">
             <a class="nav-link d-flex align-items-center me-2 active" aria-current="page" href="/">
               <i class="fa fa-chart-pie opacity-6 me-1"></i>
               Dashboard
             </a>
           </li>
-
           <li class="nav-item">
-            <label for="theme-switch" class="nav-link d-flex align-items-center me-2">
-              <i class="fa fa-sun cursor-pointer opacity-6 px-1" id="theme-indicator"></i>
-              Theme
+            <a class="nav-link me-2" href="{{url_for('pages_profile')}}">
+              <i class="fa fa-user opacity-6 me-1"></i>
+              Profile
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link me-2" href="{{url_for('accounts_register')}}">
+              <i class="fas fa-user-circle opacity-6 me-1"></i>
+              Sign Up
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link me-2" href="{{url_for('accounts_login')}}">
+              <i class="fas fa-key opacity-6 me-1"></i>
+              Sign In
+            </a>
+          </li>
+          <li class="nav-item me-2 d-flex align-items-center">
+            <label for="theme-switch" class="nav-link p-0 m-0">
+              <i class="fa fa-sun cursor-pointer opacity-6" id="theme-indicator"></i>
+              Toggle Theme
             </label>
             <input type="checkbox" class="d-none" id="theme-switch"/>
           </li>
-          
         </ul>
-
+        <li class="nav-item d-flex align-items-center">
+          <a class="btn btn-round btn-sm mb-0 btn-outline-primary me-2" target="_blank" href="https://www.creative-tim.com/builder/soft-ui?ref=navbar-dashboard">Online Builder</a>
+        </li>
         <ul class="navbar-nav d-lg-block d-none">
           <li class="nav-item">
-            <a target="_blank"
-               href="https://appseed.us/product/soft-ui-dashboard/django/" 
-               class="btn btn-sm btn-round mb-0 me-1 bg-gradient-dark">Download</a>
+            <a href="https://www.creative-tim.com/product/soft-ui-dashboard" class="btn btn-sm btn-round mb-0 me-1 bg-gradient-dark">Free download</a>
           </li>
         </ul>
       </div>

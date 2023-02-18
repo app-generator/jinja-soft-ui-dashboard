@@ -14,13 +14,13 @@
 -->
 <!DOCTYPE html>
 <html lang="en">
-{% load static %}
+
 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/apple-icon.png' %}">
-  <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{ url_for('static', filename = 'assets/img/apple-icon.png' )}}">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename = 'assets/img/favicon.png' )}}">
 
   <title>
     Soft UI Dashboard - VR Page | AppSeed
@@ -29,14 +29,14 @@
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
   <!-- Nucleo Icons -->
-  <link href="{% static 'css/nucleo-icons.css' %}" rel="stylesheet" />
-  <link href="{% static 'css/nucleo-svg.css' %}" rel="stylesheet" />
+  <link href="{{ url_for('static', filename = 'assets/css/nucleo-icons.css' )}}" rel="stylesheet" />
+  <link href="{{ url_for('static', filename = 'assets/css/nucleo-svg.css' )}}" rel="stylesheet" />
   <!-- Font Awesome Icons -->
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-  <link href="{% static 'css/nucleo-svg.css' %}" rel="stylesheet" />
+  <link href="{{ url_for('static', filename = 'assets/css/nucleo-svg.css' )}}" rel="stylesheet" />
   <!-- CSS Files -->
-  <link id="pagestyle" href="{% static 'css/soft-ui-dashboard.css' %}" rel="stylesheet" />
-  <link id="pagestyle_dark" href="{% static 'css/dark-theme-core.css' %}" rel="stylesheet" />
+  <link id="pagestyle" href="{{ url_for('static', filename = 'assets/css/soft-ui-dashboard.css' )}}" rel="stylesheet" />
+  <link id="pagestyle_dark" href="{{ url_for('static', filename = 'assets/css/dark-theme-core.css' )}}" rel="stylesheet" />
 
 </head>
 <body class="g-sidenav-show  bg-gray-100 virtual-reality">
@@ -45,7 +45,7 @@
     {% include "includes/navigation.html" %}
   </div>  
   
-  <div class="border-radius-xl mt-3 mx-3 position-relative" style="background-image: url('{% static 'img/vr-bg.jpg' %}') ; background-size: cover;">
+  <div class="border-radius-xl mt-3 mx-3 position-relative" style="background-image: url('{{ url_for('static', filename = 'assets/img/vr-bg.jpg' )}}') ; background-size: cover;">
 
     {% include "includes/sidebar.html" %}
 
@@ -56,7 +56,7 @@
           <div class="row pt-10">
             <div class="col-lg-1 col-md-1 pt-5 pt-lg-0 ms-lg-5 text-center">
               <a href="javascript:;" class="avatar avatar-md border-0" data-bs-toggle="tooltip" data-bs-placement="left" title="My Profile">
-                <img class="border-radius-lg" alt="Image placeholder" src="{% static 'img/team-1.jpg' %}">
+                <img class="border-radius-lg" alt="Image placeholder" src="{{ url_for('static', filename = 'assets/img/team-1.jpg' )}}">
               </a>
               <button class="btn btn-white border-radius-lg p-2 mt-2" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Home">
                 <i class="fas fa-home p-2"></i>
@@ -75,7 +75,7 @@
                   <h6 class="text-uppercase mb-0 ms-1">Cloudy</h6>
                 </div>
                 <div class="ms-auto">
-                  <img class="w-50 float-end mt-lg-n4" src="{% static 'img/small-logos/icon-sun-cloud.png' %}" alt="image sun">
+                  <img class="w-50 float-end mt-lg-n4" src="{{ url_for('static', filename = 'assets/img/small-logos/icon-sun-cloud.png' )}}" alt="image sun">
                 </div>
               </div>
               <div class="row mt-4">
@@ -139,7 +139,7 @@
                 <div class="col-lg-4 col-md-4 mt-4 mt-sm-0">
                   <div class="card card-background card-background-mask-primary move-on-hover align-items-start">
                     <div class="cursor-pointer">
-                      <div class="full-background" style="background-image: url('{% static 'img/curved-images/curved1.jpg' %}')"></div>
+                      <div class="full-background" style="background-image: url('{{ url_for('static', filename = 'assets/img/curved-images/curved1.jpg' )}}')"></div>
                       <div class="card-body">
                         <h5 class="text-white mb-0">Some Kind Of Blues</h5>
                         <p class="text-white text-sm">Deftones</p>
@@ -164,16 +164,16 @@
                         <div class="ms-auto">
                           <div class="avatar-group">
                             <a href="javascript:;" class="avatar avatar-sm border-0 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="2 New Messages">
-                              <img alt="Image placeholder" src="{% static 'img/team-1.jpg' %}">
+                              <img alt="Image placeholder" src="{{ url_for('static', filename = 'assets/img/team-1.jpg' )}}">
                             </a>
                             <a href="javascript:;" class="avatar avatar-sm border-0 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="1 New Message">
-                              <img alt="Image placeholder" src="{% static 'img/team-2.jpg' %}">
+                              <img alt="Image placeholder" src="{{ url_for('static', filename = 'assets/img/team-2.jpg' )}}">
                             </a>
                             <a href="javascript:;" class="avatar avatar-sm border-0 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="13 New Messages">
-                              <img alt="Image placeholder" src="{% static 'img/team-3.jpg' %}">
+                              <img alt="Image placeholder" src="{{ url_for('static', filename = 'assets/img/team-3.jpg' )}}">
                             </a>
                             <a href="javascript:;" class="avatar avatar-sm border-0 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="7 New Messages">
-                              <img alt="Image placeholder" src="{% static 'img/team-4.jpg' %}">
+                              <img alt="Image placeholder" src="{{ url_for('static', filename = 'assets/img/team-4.jpg' )}}">
                             </a>
                           </div>
                         </div>
@@ -212,7 +212,7 @@
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="{% static 'js/soft-ui-dashboard.min.js' %}"></script>
+  <script src="{{ url_for('static', filename = 'assets/js/soft-ui-dashboard.min.js' )}}"></script>
 
 </body>
 </html>
